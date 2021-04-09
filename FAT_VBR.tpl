@@ -1,6 +1,6 @@
 template "FAT12/16/32 VBR"
 
-// Costas Katsavounidis - 2021 v.1
+// Costas Katsavounidis - 2021 v.1a
 // kacos2000 [at] gmail.com
 // https://github.com/kacos2000
 
@@ -49,11 +49,10 @@ begin
             goto 0x1FE
             hex 2    "Boot Signature" //describes whether the intent of a given sector is for it to be a Boot Sector (=AA55h) or not
         endSection
-    endIf
-
+        end
     // FAT32 specific structure + Backup VBR
 
-    ifGreater "Total Sectors (32 bit)" 0
+    else
         goto 36
 	    section	"FAT32 Section"
 	        uint32	"Nr. of Sectors per FAT" //Sectors occupied by ONE FAT
