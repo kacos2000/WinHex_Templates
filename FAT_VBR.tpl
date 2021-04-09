@@ -20,10 +20,16 @@ begin
         hex 2	"JMP instruction"	 //Valid: 0xEB?? or 0xE9??
         move 1                       //0x90 in assembly = "no op"; short for no operation    
         // https://thestarman.pcministry.com/asm/mbr/NTFSBR.htm
-	    char[8]	"OEM Name"             //Microsoft OSs don't pay any attention to this field.
-	    uint16	"Bytes_per_sector"     //Range: 512, 1024, 2048 or 4096
+	    char[8]	"OEM Name"              //Microsoft OSs don't pay any attention to this field.
+	    uint16	"Bytes_per_sector"      //Range: 512, 1024, 2048 or 4096
 	    uint8	"Sectors per cluster"
-	    uint16	"Reserved sectors"     //This field must not be 0
+	    uint16	"Reserved sectors (> 0)" //This field must not be 0
+        ifGreater "Reserved sectors (> 0)" 0
+            move 0
+        else
+            endSection
+            end
+        endIf
 	    uint8	"Nr of FATs"
 	    uint16	"Nr of Root entries (12/16 bit)"
 	    uint16	"Total Sectors (12/16 bit)"
