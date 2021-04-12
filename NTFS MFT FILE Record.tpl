@@ -1,4 +1,4 @@
-template "NTFS MFT FILE Record"
+template "NTFS - MFT FILE Record"
 
 // Costas Katsavounidis - 2021.1a
 // kacos2000 [at] gmail.com
@@ -7,7 +7,7 @@ template "NTFS MFT FILE Record"
 // To be applied to the NTFS Master File Table's (MFT's) FILE records.
 // Fix-up values are not corrected/replaced which will result in errors.
 
-description "Applicable to MFT FILE Records"
+description "NTFS - MFT FILE Record"
 applies_to file/disk //Can be used with MFT file only
 sector-aligned 
 read-only           //Just in case
