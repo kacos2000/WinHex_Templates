@@ -11,6 +11,8 @@ applies_to file
 read-only
 
 // Reference: https://www.codeproject.com/Articles/9720/The-Windows-NT-print-spool-shadow-file-format
+// Reference: http://www.undocprint.org/winspool/spool_files
+// SPL file viewer: http://www.lvbprint.de/html/splviewer1.html
 
 begin
     section "SHD - Microsoft Windows Spool Shadow File"
