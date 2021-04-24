@@ -4,7 +4,7 @@ template "VMDK Header"
 // kacos2000 [at] gmail.com
 // https://github.com/kacos2000
 
-// To be applied to byte 0 of a vhdx file
+// To be applied to byte 0 of a vmdk file
 
 description "VMDK Header"
 applies_to file
