@@ -1,6 +1,6 @@
 template "NTFS VBR"
 
-// Costas Katsavounidis - 2021 v.1
+// Costas Katsavounidis - 2021 v.1a
 // kacos2000 [at] gmail.com
 // https://github.com/kacos2000
 
@@ -8,11 +8,12 @@ template "NTFS VBR"
 // Template also reads the last sector of the Volume (Backup Boot Record)
 
 description "NTFS - Volume Boot Record Structure"
-applies_to disk
+applies_to file
 sector-aligned
 read-only  
 
-requires 0x03  "4E 54 46 53 20 20 20 20" // ID must be NTFS, including trailing spaces
+//requires 0x03  "4E 54 46 53 20 20 20 20" // ID must be "NTFS", including trailing spaces
+//requires 0x03  "2D 46 56 45 2D 46 53 2D" // ID can be "-FVE-FS-"
 requires 0x1FE "55 AA"                   //Valid boot sector signature
 
 begin
@@ -32,18 +33,19 @@ begin
 	    uint32	"Nr of Hidden sectors"
 	    move 4  // skip 4 unused by NTFS bytes
 	    hex 1	"Drive Select (INT 13h drive Nr)"   // (usuallly 0x80 => First HDD)
-                                                    // 0x80:	1st hard disk 
+                                                    // 0x80:1st hard disk 
                                                     // 0x81	2nd hard disk 
-                                                    // 0x82:	3rd hard disk 
+                                                    // 0x82:3rd hard disk 
                                                     // ..
-                                                    // 0xFF: 128th hard disk
+                                                    // 0xFF:128th hard disk
         // https://thestarman.pcministry.com/asm/mbr/NTFSBR.htm                                        
         move 3  // skip (usually 0x00800)
 	    int64	"Total_sectors_excl_backup_boot_sector"
 	    int64	"LCN of $MFT"	
 	    int64	"LCN of $MFTMirr"	
-	    uint32	"Clusters Per File Record Segment"
-        uint8   "Clusters Per Index Buffer"
+	    int8	"Clusters Per File Record Segment"
+       move 3
+		 uint8   "Clusters Per Index Buffer"
 	    move 3  // skip unused by NTFS bytes
 	    hex 4	"32-bit serial number (hex)"
 	    move -4
@@ -77,8 +79,9 @@ begin
 	        int64	"Total sectors (excl. backup boot sector)"
 	        int64	"LCN_of_$MFT"	
 	        int64	"LCN_of_$MFTMirr"	
-	        uint32	"Clusters Per File Record Segment"
-            uint8   "Clusters Per Index Buffer"
+	        int8	"Clusters Per File Record Segment"
+           move 3
+			  uint8   "Clusters Per Index Buffer"
 	        move 3  // skip unused by NTFS bytes
 	        hex 4	"32-bit serial number (hex)"
 	        move -4
