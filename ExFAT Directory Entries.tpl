@@ -61,11 +61,11 @@ else ifEqual "Type Code" 0x85
 else ifEqual "Type Code" 0x05
 	move 0
 else ifEqual "Type Code" 0xA0 //Volume GUID Directory Entry
-	int8			"Number_of_Secondary_entries"
+	int8		"Number_of_Secondary_entries" //the valid value for this field is 0
 	little-endian hex 2	"SetChecksum"
-	binary [4]	"General Primary Flags"
-	GUID		   "Volume GUID"
-	hex 10		"Reserved"
+	little-endian hex 2	"General Primary Flags"
+	GUID	   "Volume GUID"
+	hex 10	"Reserved"
 	end
 else ifEqual "Type Code" 0xA1 //exFAT Padding Directory Entry
 	end

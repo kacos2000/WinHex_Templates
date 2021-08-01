@@ -1,6 +1,6 @@
 template "NTFS VBR"
 
-// Costas Katsavounidis - 2021 v.1a
+// Costas Katsavounidis - 2021 v.1b
 // kacos2000 [at] gmail.com
 // https://github.com/kacos2000
 
@@ -8,7 +8,7 @@ template "NTFS VBR"
 // Template also reads the last sector of the Volume (Backup Boot Record)
 
 description "NTFS - Volume Boot Record Structure"
-applies_to file
+//applies_to file
 sector-aligned
 read-only  
 
@@ -62,7 +62,9 @@ begin
     ifGreater ((Bytes_per_sector)*(Total_sectors_excl_backup_boot_sector)) 0
         goto ((Bytes_per_sector)*(Total_sectors_excl_backup_boot_sector))
         section	"[Backup] NTFS Boot Sector & BPB Structure"
-            hex 3	"JMP instruction"			
+            hex 2	"JMP instruction"
+            move 1  //0x90 in assembly = "no op"; short for no operation    
+            // https://thestarman.pcministry.com/asm/mbr/NTFSBR.htm			
 	        char[8]	"File System Name"
 	        uint16	"Bytes_per_sector"
 	        uint8	"Sectors_per_cluster"
