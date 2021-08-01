@@ -69,8 +69,10 @@ else ifEqual "Type Code" 0xA0 //Volume GUID Directory Entry
 	end
 else ifEqual "Type Code" 0xA1 //exFAT Padding Directory Entry
 	end
+else ifEqual "Type Code" 0xA2 //Windows CE Access Control Table Directory Entry 
+	end
 else
-end
+    end
 endIF
 	uint8	"Number_of_Secondary_entries"
 	little-endian hex 2	"SetChecksum"
