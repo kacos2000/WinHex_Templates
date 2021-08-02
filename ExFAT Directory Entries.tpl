@@ -1,6 +1,6 @@
 template "ExFAT Directory Entries"
 
-// Costas Katsavounidis - 2021 v.1b
+// Costas Katsavounidis - 2021 v.1c
 // kacos2000 [at] gmail.com
 // https://github.com/kacos2000
 
@@ -93,7 +93,7 @@ endIF
 	uint_flex "6,7,8,9,10,11,12,13,14,15" " | Bits 6-15 - Reserved2"
 	move -2
 	hex 2			"Reserved1"
-    uint_flex "4,3,2,1,0" "|Bits  4  - 0 - Create Seconds (x2)"
+    uint_flex "4,3,2,1,0" "|Bits  4  - 0 - Create DoubleSeconds (x2)" //two-second multiples
     move -4
     uint_flex "10,9,8,7,6,5" "|Bits 10 - 5 - Create Minutes"
     move -4
@@ -106,7 +106,7 @@ endIF
     uint_flex "31,30,29,28,27,26,25" "|Bits 31-25 - Create Year (+1980)"
     move -4
 	dosdatetime	"CreateTimestamp"
-    uint_flex "4,3,2,1,0" "|Bits  4  - 0 - Modified Seconds (x2)"
+    uint_flex "4,3,2,1,0" "|Bits  4  - 0 - Modified DoubleSeconds (x2)" //two-second multiples
     move -4
     uint_flex "10,9,8,7,6,5" "|Bits 10- 5  - Modified Minutes"
     move -4
@@ -119,7 +119,7 @@ endIF
     uint_flex "31,30,29,28,27,26,25" "|Bits 31-25 - Modified Year (+1980)"
     move -4
 	dosdatetime "Last Modified Timestamp"
-    uint_flex "4,3,2,1,0" "|Bits  4 - 0  - Accessed Seconds (x2)"
+    uint_flex "4,3,2,1,0" "|Bits  4 - 0  - Accessed DoubleSeconds (x2)" //two-second multiples
     move -4
     uint_flex "10,9,8,7,6,5" "|Bits 10- 5  - Accessed Minutes"
     move -4
@@ -134,10 +134,19 @@ endIF
 	dosdatetime	"Last Accessed Timestamp"
 	byte			"Create 10ms Increment"
 	byte			"Last Modified 10ms Increment"
-	hex 1			"CreateUtcOffset"
-	hex 1			"LastModifiedUtcOffset"
-	hex 1			"LastAccessedUtcOffset"
-	hex 7			"Reserved2"
+	little-endian uint_flex "0,1,2,3,4,5,6"	"Bits 0-6 - CreateUtcOffset (15mins)" //15 minute interval
+    move -4
+    uint_flex "7"	"Bit 7 - CreateOffsetValid (1: Valid)"
+	move -3
+	little-endian uint_flex "0,1,2,3,4,5,6"	"Bits 0-6 - LastModifiedUtcOffset  (15mins)" //15 minute interval
+    move -4
+    uint_flex "7"	"Bit 7 - LastModifiedOffsetValid (1: Valid)"
+	move -3
+	little-endian uint_flex "0,1,2,3,4,5,6"	"Bits 0-6 - LastAccessedUtcOffset  (15mins)" //15 minute interval
+    move -4
+    uint_flex "7"	"Bit 7 - LastAccessedOffsetValid (1: Valid)"
+	move -3
+	hex 7	"Reserved2"
 endsection
 
 Section "Stream Extension"
@@ -208,4 +217,3 @@ endSection
 
 
 end
-
