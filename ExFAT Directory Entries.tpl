@@ -93,43 +93,43 @@ endIF
 	uint_flex "6,7,8,9,10,11,12,13,14,15" " | Bits 6-15 - Reserved2"
 	move -2
 	hex 2			"Reserved1"
-    uint_flex "4,3,2,1,0" "|Bits  4  - 0 - Create DoubleSeconds (x2)" //two-second multiples
+    uint_flex "4,3,2,1,0" "|Bits  0 - 4  - Create DoubleSeconds (x2)" //two-second multiples
     move -4
-    uint_flex "10,9,8,7,6,5" "|Bits 10 - 5 - Create Minutes"
+    uint_flex "10,9,8,7,6,5" "|Bits  5 -10 - Create Minutes"
     move -4
-    uint_flex "15,14,13,12,11" "|Bits 15-11 - Create Hour"
+    uint_flex "15,14,13,12,11" "|Bits 11-15 - Create Hour"
     move -4
-    uint_flex "20,19,18,17,16" "|Bits 20-16 - Create Day"
+    uint_flex "20,19,18,17,16" "|Bits 16-20 - Create Day"
     move -4
-    uint_flex "24,23,22,21" "|Bits 24-21 - Create Month"
+    uint_flex "24,23,22,21" "|Bits 21-24 - Create Month"
     move -4
-    uint_flex "31,30,29,28,27,26,25" "|Bits 31-25 - Create Year (+1980)"
+    uint_flex "31,30,29,28,27,26,25" "|Bits 25-31 - Create Year (+1980)"
     move -4
 	dosdatetime	"CreateTimestamp"
-    uint_flex "4,3,2,1,0" "|Bits  4  - 0 - Modified DoubleSeconds (x2)" //two-second multiples
+    uint_flex "4,3,2,1,0" "|Bits  0 - 4  - Modified DoubleSeconds (x2)" //two-second multiples
     move -4
-    uint_flex "10,9,8,7,6,5" "|Bits 10- 5  - Modified Minutes"
+    uint_flex "10,9,8,7,6,5" "|Bits  5 -10 - Modified Minutes"
     move -4
-    uint_flex "15,14,13,12,11" "|Bits 15-11 - Modified Hour"
+    uint_flex "15,14,13,12,11" "|Bits 11-15 - Modified Hour"
     move -4
-    uint_flex "20,19,18,17,16" "|Bits 20-16 - Modified Day"
+    uint_flex "20,19,18,17,16" "|Bits 16-20 - Modified Day"
     move -4
-    uint_flex "24,23,22,21" "|Bits 24-21 - Modified Month"
+    uint_flex "24,23,22,21" "|Bits 21-24 - Modified Month"
     move -4
-    uint_flex "31,30,29,28,27,26,25" "|Bits 31-25 - Modified Year (+1980)"
+    uint_flex "31,30,29,28,27,26,25" "|Bits 25-31 - Modified Year (+1980)"
     move -4
 	dosdatetime "Last Modified Timestamp"
-    uint_flex "4,3,2,1,0" "|Bits  4 - 0  - Accessed DoubleSeconds (x2)" //two-second multiples
+    uint_flex "4,3,2,1,0" "|Bits  0 - 4  - Accessed DoubleSeconds (x2)" //two-second multiples
     move -4
-    uint_flex "10,9,8,7,6,5" "|Bits 10- 5  - Accessed Minutes"
+    uint_flex "10,9,8,7,6,5" "|Bits  5 -10 - Accessed Minutes"
     move -4
-    uint_flex "15,14,13,12,11" "|Bits 15-11 - Accessed Hour"
+    uint_flex "15,14,13,12,11" "|Bits 11-15 - Accessed Hour"
     move -4
-    uint_flex "20,19,18,17,16" "|Bits 20-16 - Accessed Day"
+    uint_flex "20,19,18,17,16" "|Bits 16-20 - Accessed Day"
     move -4
-    uint_flex "24,23,22,21" "|Bits 24-21 - Accessed Month"
+    uint_flex "24,23,22,21" "|Bits 21-24 - Accessed Month"
     move -4
-    uint_flex "31,30,29,28,27,26,25" "|Bits 31-25 - Accessed Year (+1980)"
+    uint_flex "31,30,29,28,27,26,25" "|Bits 25-31 - Accessed Year (+1980)"
     move -4
 	dosdatetime	"Last Accessed Timestamp"
 	byte			"Create 10ms Increment"
