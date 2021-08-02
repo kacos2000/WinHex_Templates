@@ -20,7 +20,7 @@ begin
 Section "Directory File Entry"
    hex 1		"Type Code"
 	move -1
-	binary "Type Code binary"
+	binary[1] "Type Code binary"
 		move -1
 		uint_flex "0" " | Bit 0 - TypeCode"
 		move -4
@@ -76,7 +76,7 @@ else
 endIF
 	uint8	"Number_of_Secondary_entries"
 	little-endian hex 2	"SetChecksum"
-	binary "File Attributes "
+	binary[1] "File Attributes "
 	move -1
 	uint_flex "0" " | Bit 0 - Read Only"
 	move -4
@@ -93,8 +93,44 @@ endIF
 	uint_flex "6,7,8,9,10,11,12,13,14,15" " | Bits 6-15 - Reserved2"
 	move -2
 	hex 2			"Reserved1"
+    uint_flex "4,3,2,1,0" "|Bits  4  - 0 - Create Seconds (x2)"
+    move -4
+    uint_flex "10,9,8,7,6,5" "|Bits 10 - 5 - Create Minutes"
+    move -4
+    uint_flex "15,14,13,12,11" "|Bits 15-11 - Create Hour"
+    move -4
+    uint_flex "20,19,18,17,16" "|Bits 20-16 - Create Day"
+    move -4
+    uint_flex "24,23,22,21" "|Bits 24-21 - Create Month"
+    move -4
+    uint_flex "31,30,29,28,27,26,25" "|Bits 31-25 - Create Year (+1980)"
+    move -4
 	dosdatetime	"CreateTimestamp"
+    uint_flex "4,3,2,1,0" "|Bits  4  - 0 - Modified Seconds (x2)"
+    move -4
+    uint_flex "10,9,8,7,6,5" "|Bits 10- 5  - Modified Minutes"
+    move -4
+    uint_flex "15,14,13,12,11" "|Bits 15-11 - Modified Hour"
+    move -4
+    uint_flex "20,19,18,17,16" "|Bits 20-16 - Modified Day"
+    move -4
+    uint_flex "24,23,22,21" "|Bits 24-21 - Modified Month"
+    move -4
+    uint_flex "31,30,29,28,27,26,25" "|Bits 31-25 - Modified Year (+1980)"
+    move -4
 	dosdatetime "Last Modified Timestamp"
+    uint_flex "4,3,2,1,0" "|Bits  4 - 0  - Accessed Seconds (x2)"
+    move -4
+    uint_flex "10,9,8,7,6,5" "|Bits 10- 5  - Accessed Minutes"
+    move -4
+    uint_flex "15,14,13,12,11" "|Bits 15-11 - Accessed Hour"
+    move -4
+    uint_flex "20,19,18,17,16" "|Bits 20-16 - Accessed Day"
+    move -4
+    uint_flex "24,23,22,21" "|Bits 24-21 - Accessed Month"
+    move -4
+    uint_flex "31,30,29,28,27,26,25" "|Bits 31-25 - Accessed Year (+1980)"
+    move -4
 	dosdatetime	"Last Accessed Timestamp"
 	byte			"Create 10ms Increment"
 	byte			"Last Modified 10ms Increment"
@@ -107,7 +143,7 @@ endsection
 Section "Stream Extension"
    hex 1			"Type Code" // 0xC0 or 0x40
 	move -1
-	binary "Type Code binary"
+	binary[1] "Type Code binary"
 		move -1
 		uint_flex "0" " | Bit 0 - TypeCode"
 		move -4
@@ -125,7 +161,7 @@ Section "Stream Extension"
 		move -4
 		uint_flex "7" " | Bit 7 - 0: Not In Use, 1: In Use" //InUse
 		move -3
-	binary		"Secondary Flags"
+	binary[1]	"Secondary Flags"
 		move -1
 		uint_flex "0" " | AllocationPossible (0: No, 1: Yes)"
 		move -4
@@ -147,7 +183,7 @@ numbering 1{
 Section "File Name Directory Entry #~"
 	hex 1			"Type Code" // 0xC1 or 0x41
 	move -1
-	binary "Type Code binary"
+	binary[1] "Type Code binary"
 		move -1
 		uint_flex "0" " | Bit 0 - TypeCode"
 		move -4
@@ -165,7 +201,7 @@ Section "File Name Directory Entry #~"
 		move -4
 		uint_flex "7" " | Bit 7 - 0: Not In Use, 1: In Use" //InUse
 		move -3
-	binary		"Secondary Flags"
+	binary[1]		"Secondary Flags"
    little-endian string16 15 "Filename Unicode" 
 endSection
 }[(Number_of_Secondary_entries-1)]
