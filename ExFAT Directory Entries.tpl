@@ -134,19 +134,19 @@ endIF
 	dosdatetime	"Last Accessed Timestamp"
 	byte			"Create 10ms Increment"
 	byte			"Last Modified 10ms Increment"
-    hex 1 "CreateUtcOffset (Hex)"
+    int8 "CreateUtcOffset (Signed Equiv)"
     move -1
 	little-endian uint_flex "0,1,2,3,4,5,6"	"Bits 0-6 - CreateUtcOffset (15')" //15 minute interval
     move -4
     uint_flex "7"	"Bit 7 - CreateOffsetValid (1: Valid)"
 	move -3
-    hex 1 "LastModifiedUtcOffset (Hex)"
+    int8 "LastModifiedUtcOffset (Signed Equiv)"
     move -1
 	little-endian uint_flex "0,1,2,3,4,5,6"	"Bits 0-6 - LastModifiedUtcOffset  (15')" //15 minute interval
     move -4
     uint_flex "7"	"Bit 7 - LastModifiedOffsetValid (1: Valid)"
 	move -3
-    hex 1 "LastAccessedUtcOffset (Hex)"
+    int8 "LastAccessedUtcOffset (Signed Equiv)"
     move -1
 	little-endian uint_flex "0,1,2,3,4,5,6"	"Bits 0-6 - LastAccessedUtcOffset  (15')" //15 minute interval
     move -4
