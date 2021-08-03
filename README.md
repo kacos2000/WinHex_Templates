@@ -11,5 +11,6 @@ Note 3:  [X-Ways Forensic & WinHex user manual (pdf)](https://www.x-ways.net/win
 Other templates included here:<br>
   - [Gabriele Zambelli© (@gazambelli) ETL Header template](https://github.com/kacos2000/WinHex_Templates/blob/master/ETL_Header_x64.tpl)<br> 
   - [X-Ways© default templates](https://github.com/kacos2000/WinHex_Templates/tree/master/WinHex_default)<br>
-  - [X-Ways© additional/user templates](https://github.com/kacos2000/WinHex_Templates/tree/master/WinHex_additional)
+  - [X-Ways© additional/user templates](https://github.com/kacos2000/WinHex_Templates/tree/master/WinHex_additional)<br>
 
+*Download all templates in one [ZIP file](https://github.com/kacos2000/WinHex_Templates/archive/refs/heads/master.zip)*
