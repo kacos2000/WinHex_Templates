@@ -4,8 +4,9 @@ Just download and save/move to your WinHex or X-Ways Forensics program folder.<b
 Templates are .txt files with a .tpl file extension, and can be viewed /edited with any <br>
 text editor, or from 'View', 'Template Manager' in WinHex/XWF.
 
-Note 1: References/notes are included within each template file.<br>
-Note 2: [Template Editing](https://documentation.help/WinHex-X-Ways/topic52.htm)<br>
+Note 1:  References/notes are included within each template file.<br>
+Note 2:  [Template Editing](https://documentation.help/WinHex-X-Ways/topic52.htm)<br>
+Note 3:  [X-Ways Forensic & WinHex user manual (pdf)](https://www.x-ways.net/winhex/manual.pdf) *(template editing: Ch.7.6 Page 159)*<br>
 
 Other templates included here:<br>
   - [Gabriele Zambelli© (@gazambelli) ETL Header template](https://github.com/kacos2000/WinHex_Templates/blob/master/ETL_Header_x64.tpl)<br> 
