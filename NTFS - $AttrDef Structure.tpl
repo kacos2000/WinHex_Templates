@@ -57,6 +57,10 @@ Numbering 1
                 move -4 
                 hexadecimal uint32 "-> Always Resident"
             else
+        ifEqual "Flags" 0x42000000
+                move -4 
+                hexadecimal uint32 "-> Always Resident & Indexed"
+            else
         ifEqual "Flags" 0x80000000
                 move -4 
                 hexadecimal uint32 "-> Allowed to be Non-Resident"
