@@ -6,7 +6,7 @@ template "ReFS SuperBlock"
 
 
 // First SuperBlock starts at Cluster 30
-// There are 2 Additional copies of the SuperBlock at 3rd and 2nd last clusters of the Volume
+// There are 2 Additional copies of the SuperBlock in the 3rd and 2nd last clusters of the Volume
 
 // To be applied to byte 0 of a SuperBlock
 
@@ -21,7 +21,7 @@ begin
     char[4] "Signature"
     uint32  "Unknown" // Always 0x2
     move 4
-	hex 4	"Volume signature (hex)"
+	little-endian hexadecimal uint32	"Volume signature (hex)"
     hex 8   "Virtual Allocator Clock"
     hex 8   "Tree Update Clock" 
     //int64   "VCN 0" // SuperBlock start offset
