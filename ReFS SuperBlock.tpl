@@ -1,12 +1,16 @@
 template "ReFS SuperBlock"
 
-// Costas Katsavounidis - 2021
+// Costas Katsavounidis - 2021 v.2
 // kacos2000 [at] gmail.com
 // https://github.com/kacos2000
 
 
 // First SuperBlock starts at Cluster 30
 // There are 2 Additional copies of the SuperBlock in the 3rd and 2nd last clusters of the Volume
+
+// Reference:
+// Forensic Analysis of the Resilient File System (ReFS) Version 3.4 Technical Report CS-2019-05
+// https://opus4.kobv.de/opus4-fau/files/12526/refs_report.pdf
 
 // To be applied to byte 0 of a SuperBlock
 
@@ -22,8 +26,8 @@ begin
     uint32  "Unknown" // Always 0x2
     move 4
 	little-endian hexadecimal uint32	"Volume signature (hex)"
-    hex 8   "Virtual Allocator Clock"
-    hex 8   "Tree Update Clock" 
+    int64   "Virtual Allocator Clock"
+    int64   "Tree Update Clock" 
     //int64   "VCN 0" // SuperBlock start offset
     int64   "Superblock start (offset)" // offset sector from start of Volume
     //int64   "VCN 1"
