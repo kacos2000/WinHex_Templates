@@ -13,4 +13,7 @@ Other templates included here:<br>
   - [X-Ways© default templates](https://github.com/kacos2000/WinHex_Templates/tree/master/WinHex_default)<br>
   - [X-Ways© additional/user templates](https://github.com/kacos2000/WinHex_Templates/tree/master/WinHex_additional)<br>
 
+Other templates NOT included here:<br>
+  - [Jens Kirschner](https://res.jens-training.com/)'s [templates](https://res.jens-training.com/templates/)<br>
+
 *Download all templates in one [ZIP file](https://github.com/kacos2000/WinHex_Templates/archive/refs/heads/master.zip)*
